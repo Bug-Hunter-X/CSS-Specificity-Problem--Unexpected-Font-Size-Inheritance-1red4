@@ -1,0 +1,43 @@
+Several approaches can solve the unexpected font-size inheritance:
+
+**Approach 1: Increasing Specificity**
+
+The most straightforward solution involves increasing the specificity of the `.special-paragraph p` selector. We can achieve this by adding an extra, more specific parent selector:
+
+```css
+div {
+  font-size: 16px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.special-paragraph div p {
+  font-size: 14px !important; /* Use !important if needed */ 
+}
+```
+
+**Approach 2: Using `!important` (Less Recommended)**
+
+While generally discouraged for maintainability, the `!important` flag forces the rule to override all others:
+
+```css
+div {
+  font-size: 16px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.special-paragraph p {
+  font-size: 14px !important;
+}
+```
+
+**Approach 3:  Re-structuring the HTML (Best Practice)**
+
+Sometimes, the best solution is to restructure your HTML to improve the clarity and reduce CSS specificity conflicts. If possible, re-structure to minimize nested selectors.
+
+Choose the solution that best fits your project's style and maintainability standards. Prioritize solutions that don't rely on `!important` for long-term code health.
