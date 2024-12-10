@@ -1,0 +1,17 @@
+The following CSS code snippet demonstrates an issue where the expected behavior is not occurring due to unexpected specificity or inheritance:
+
+```css
+div {
+  font-size: 16px;
+}
+
+p {
+  font-size: 18px;
+}
+
+.special-paragraph p {
+  font-size: 14px;
+}
+```
+
+The expectation is that the paragraph inside the div with the class "special-paragraph" will have a font size of 14px. However, due to specificity rules, the paragraph might inherit the font size from its parent div, overriding the more specific class selector. This occurs because the selector `div p` (implicitly applied) has equal specificity to `.special-paragraph p` leading to the last declared rule taking precedence. 
